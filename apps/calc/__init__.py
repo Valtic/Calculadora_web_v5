@@ -2,7 +2,7 @@
 from flask import Blueprint
 
 blueprint = Blueprint(
-    'calc_blueroutes',
+    'calc_blueprint',
     __name__,
     url_prefix='/calc'
 )
