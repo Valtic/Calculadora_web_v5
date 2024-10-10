@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{% if title %} {{title}} {% else %} Calculadoras V4 by Valtic - Feets {% endif %}  {% endblock %}
+
+{% block router_content %}
+    <li class="breadcrumb-item active" aria-current="page">
+    Temperatura</li>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="temp-form">
+
+    <h1>Temperature Conversion</h1>
+    <form class=Form action="convert" method="POST">
+        <div class="form-group required">      
+            <label class="form-control-label" for="temperature">Temperature:</label>
+            <input class="form-control" type="number" name="temperature" id="temperature" required>    
+        </div>
+
+        <div class="form-group required">   
+            <label class="form-control-label" for="unit">Unit:</label>
+            <select class="form-control"  name="unit" id="unit" required>
+                <option value="celsius">Celsius</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+         </div>
+
+        <input class="btn btn-primary btn-md" id="submit"  type="submit" value="Convertir">
+    </form>
+    
+    <h2>Temperature Conversion Result:</h2>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+
+
+    <nav class="pagination">
+        <span class="prev"><a href="{{url_for('calc_blueprint.pressure')}}">Presion</a></span>
+        <span class="next"><a href="{{url_for('calc_blueprint.feetMeter')}}">Longitud</a></span>
+    </nav>
+
+</div>
+
+
+
+{% endblock %}

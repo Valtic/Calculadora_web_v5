@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}{% if title %} {{title}} {% else %} Calculadoras V4 by Valtic - Pot. Electrica {% endif %}  {% endblock %}
+
+{% block router_content %}
+<li class="breadcrumb-item active" aria-current="page">
+    Potencia Electrica</li>
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="potelec-form">
+
+    <h1>Electric Power Conversion</h1>
+    <form class=Form action="convertpot" method="POST">
+        <div class="form-group required">  
+            <label class="form-control-label"  for="Voltage">Voltaje:</label>
+            <input class="form-control" type="number" name="voltaje" id="voltaje"  value="380" required>
+        </div>
+        <div class="form-group required">  
+            <label class="form-control-label" for="powerFactor">Power Factor:</label>
+            <input class="form-control" type="float" name="pf" id="pf"  value="85" required>
+        </div>
+        <div class="form-group required">  
+            <label class="form-control-label" for="Potencia">Potencia:</label>
+            <input class="form-control" type="number" name="potencia" id="potencia" required>
+        </div>
+
+        <div class="form-group required">  
+            <label class="form-control-label" for="unit">Unit:</label>
+            <select class="form-control" name="unit" id="unit" required>
+                <option value="kw">Kw/h</option>
+                <option value="amp">Amp</option>
+            </select>
+        </div>
+        <input class="btn btn-primary btn-md" type="submit" value="Convertir">
+    </form>
+    
+    <h2>Electric Power Conversion Result:</h2>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+
+
+</div>
+
+<nav class="pagination">
+    <span class="prev"><a href="{{url_for('calc_blueprint.potencia')}}">Potencia</a></span>
+    <span class="next"><a href="{{url_for('calc_blueprint.potencia')}}">Potencia</a></span>
+</nav>
+
+{% endblock %}

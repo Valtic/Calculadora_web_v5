@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+{% import "bootstrap/form.html" as wtf %}
+
+{% block title %}{% if title %} {{title}} {% else %} <p>Calculadoras V4 by Valtic - Feets </p>{% endif %}  {% endblock %}
+
+{% block router_content %}
+<li class="breadcrumb-item active" aria-current="page">
+    Longitud</li>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="feetsMeter-form">
+    <h1>Feet to Meters Conversion 2023</h1>
+    {{ wtf.render_form(form) }}
+    
+    <h2>Feet to Meters Conversion Result:</h2>
+
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+
+
+</div>
+
+
+<nav class="pagination">
+    <span class="prev"><a href="{{url_for('calc_blueprint.temperatura')}}">Temperatura</a></span>
+    <span class="next"><a href="{{url_for('calc_blueprint.pressure')}}">Presion</a></span>
+</nav>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let input = document.getElementById('resultado');
+    function clearResult(event) {
+       // access input field
+       let output = document.getElementById('resultado');
+       // clear the input field.
+       output.value = "";
+    }
+
+
+    var myField = document.getElementById("feets");
+    myField.oninput = clearResult;
+    var myField = document.getElementById("inchs");
+    myField.oninput = clearResult;
+
+</script>
+{% endblock %}

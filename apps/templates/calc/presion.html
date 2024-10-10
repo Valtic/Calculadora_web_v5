@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+{% import "bootstrap/form.html" as wtf %}
+
+{% block title %}{% if title %} {{title}} {% else %} <p>Calculadoras V4 by Valtic - Presión </p>{% endif %}  {% endblock %}
+
+{% block router_content %}
+<li class="breadcrumb-item active" aria-current="page">
+    Presion</li>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="presion-form">
+    <h1>Conversion de Presion</h1>
+    {{ wtf.render_form(form) }}
+    
+    <h2>Resultado:</h2>
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+
+</div>
+
+
+<nav class="pagination">
+    <span class="next"><a href="{{url_for('calc_blueprint.feetMeter')}}">Longitud</a></span>
+    <span class="next"><a href="{{url_for('calc_blueprint.temperatura')}}">Temperatura</a></span>
+</nav>
+
+{% endblock %}
